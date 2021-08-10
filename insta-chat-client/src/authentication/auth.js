@@ -1,10 +1,13 @@
 import React, {useEffect, useState} from "react";
 import app from "./firebase"
 
-export const AuthContext = React.createContext();
 
 export const AuthProvider = ({ children }) => {
     const [currentUser, setCurrentUser] = useState(null);
+    const context = {
+        currentUser: currentUser,
+        setCurrentUser: setCurrentUser
+    }
 
     useEffect(() => {
         app.auth().onAuthStateChanged((user) => {
@@ -14,8 +17,10 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     return (
-        <AuthContext.Provider value = {{currentUser, setCurrentUser}}>
+        <AuthContext.Provider value = {context}>
             {children}
         </AuthContext.Provider>
     )
 }
+
+export const AuthContext = React.createContext();

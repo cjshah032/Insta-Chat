@@ -1,6 +1,6 @@
 import React from 'react'
-import { useState, useCallback, useContext } from 'react'
-import {Redirect, Route, withRouter as withRouter} from "react-router"
+import { useCallback, useContext } from 'react'
+import {Redirect, withRouter as withRouter} from "react-router"
 import { AuthContext } from './auth';
 import app from './firebase';
 import styles from './auth.module.css'
@@ -48,9 +48,9 @@ const Login = (props) => {
 
         }, [history]);
 
-    // if(currentUser !== null) {
-    //     return <Redirect to = "/" />
-    // }
+    if(currentUser !== null) {
+        return <Redirect to = "/" />
+    }
 
     return (
         <div className={styles.lcard}>

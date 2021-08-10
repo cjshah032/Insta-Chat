@@ -29,9 +29,9 @@ const SignUp = (props) => {
            try {
                await app.auth()
                 .createUserWithEmailAndPassword(email.value, password.value);
-                history.push('/');
+                history.push('/signup-profile');
            } catch (error) {
-               alert("Error");
+               console.log(error)
            }
         }, [history]);
 
@@ -50,12 +50,12 @@ const SignUp = (props) => {
 
                 <div className={styles.input}>
                     <label value="Email/Username" htmlFor="email"> Email/Username<span className={styles.required}>*</span></label> <br />
-                    <input type="email" name="email" placeholder="Email" required="true" /> <br />
+                    <input type="email" name="email" placeholder="Email" required={true} /> <br />
                 </div>
 
                 <div className={styles.input}>
                     <label value="Password" htmlFor="password">Password<span className={styles.required}>*</span> </label> <br />
-                    <input type="password" name="password" placeholder="Password" required="true" />
+                    <input type="password" name="password" placeholder="Password" required={true} />
                 </div>
                 <div className={styles.foot}>
                     <button type="submit">
